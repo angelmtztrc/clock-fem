@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { SunIcon } from '@heroicons/react/outline';
+import { useEffect, useMemo, useState } from 'react';
+import { SunIcon, MoonIcon } from '@heroicons/react/outline';
 
 import dayjs from '@/libs/helpers/dayjs.helper';
 import { shortTimezone } from '@/libs/helpers/timezone.helper';
@@ -7,6 +7,10 @@ import { dayState } from '@/libs/helpers/day-time.helper';
 
 export const Clock = ({}: ClockProps) => {
   const [time, setTime] = useState(dayjs());
+  const dayStatus = useMemo(
+    () => dayState(time.format('HH')),
+    [time.format('HH')]
+  );
 
   useEffect(() => {
     const timerId = setInterval(() => setTime(dayjs()), 30000);
@@ -19,9 +23,14 @@ export const Clock = ({}: ClockProps) => {
   return (
     <div>
       <div className="flex items-center space-x-4">
-        <SunIcon className="h-6 w-6 text-white" />
+        {dayStatus === 'morning' ? (
+          <SunIcon className="h-6 w-6 text-white" />
+        ) : (
+          <MoonIcon className="h-6 w-6 text-white" />
+        )}
+
         <p className="font-inter text-base uppercase leading-6 tracking-[4px] text-white">
-          GOOD {dayState(time.format('HH'))}
+          GOOD {dayStatus}
         </p>
       </div>
 
