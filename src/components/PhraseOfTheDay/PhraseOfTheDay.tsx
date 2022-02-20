@@ -2,7 +2,7 @@ import { RefreshIcon } from '@heroicons/react/outline';
 
 export const PhraseOfTheDay = ({}: PhraseOfTheDayProps) => {
   return (
-    <div className="flex space-x-4">
+    <div className="flex max-w-fit space-x-4">
       <div>
         <blockquote className="font-inter text-xs leading-6 tracking-normal text-white">
           “The science of operations, as derived from mathematics more

@@ -18,9 +18,10 @@ const App = () => {
               <Clock />
               <Button
                 className="mt-12"
+                isActive={displayDetails}
                 onClick={() => setDisplayDetails(!displayDetails)}
               >
-                MORE
+                {displayDetails ? 'LESS' : 'MORE'}
               </Button>
             </main>
           </div>

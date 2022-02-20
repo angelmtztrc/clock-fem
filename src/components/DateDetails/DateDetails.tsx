@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import classNames from 'classnames';
 
+import dayjs from '@/libs/helpers/dayjs.helper';
+
 export const DateDetails = ({ display }: DateDetailsProps) => {
+  const [timezone, setTimezone] = useState(dayjs.tz.guess());
+
   return (
     <div
       className={classNames(
@@ -14,25 +19,33 @@ export const DateDetails = ({ display }: DateDetailsProps) => {
           <p className="text-jet font-inter text-xs uppercase leading-7 tracking-[2px]">
             Current Timezone
           </p>
-          <p className="text-jet font-inter text-xl font-bold">Europe/London</p>
+          <p className="text-jet font-inter text-xl font-bold capitalize">
+            {timezone}
+          </p>
         </div>
         <div className="flex items-center justify-between">
           <p className="text-jet font-inter text-xs uppercase leading-7 tracking-[2px]">
             Day of the year
           </p>
-          <p className="text-jet font-inter text-xl font-bold">295</p>
+          <p className="text-jet font-inter text-xl font-bold">
+            {dayjs().dayOfYear()}
+          </p>
         </div>
         <div className="flex items-center justify-between">
           <p className="text-jet font-inter text-xs uppercase leading-7 tracking-[2px]">
             Day of the week
           </p>
-          <p className="text-jet font-inter text-xl font-bold">5</p>
+          <p className="text-jet font-inter text-xl font-bold">
+            {dayjs().day()}
+          </p>
         </div>
         <div className="flex items-center justify-between">
           <p className="text-jet font-inter text-xs uppercase leading-7 tracking-[2px]">
             Week number
           </p>
-          <p className="text-jet font-inter text-xl font-bold">42</p>
+          <p className="text-jet font-inter text-xl font-bold">
+            {dayjs().week()}
+          </p>
         </div>
       </div>
     </div>

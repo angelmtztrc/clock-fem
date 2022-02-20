@@ -2,7 +2,12 @@ import { ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/solid';
 
-export const Button = ({ className, children, ...rest }: ButtonProps) => {
+export const Button = ({
+  className,
+  children,
+  isActive,
+  ...rest
+}: ButtonProps) => {
   return (
     <button
       className={classNames(
@@ -15,10 +20,16 @@ export const Button = ({ className, children, ...rest }: ButtonProps) => {
         {children}
       </span>
       <div className="bg-jet absolute top-1 right-1 flex h-10 w-10 items-center justify-center rounded-full">
-        <ChevronDownIcon className="h-5 w-5 text-white" />
+        {isActive ? (
+          <ChevronUpIcon className="h-5 w-5 text-white" />
+        ) : (
+          <ChevronDownIcon className="h-5 w-5 text-white" />
+        )}
       </div>
     </button>
   );
 };
 
-interface ButtonProps extends ComponentPropsWithoutRef<'button'> {}
+interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+  isActive?: boolean;
+}

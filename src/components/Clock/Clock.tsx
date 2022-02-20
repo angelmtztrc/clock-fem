@@ -1,6 +1,20 @@
+import { useEffect, useState } from 'react';
 import { SunIcon } from '@heroicons/react/outline';
 
+import dayjs from '@/libs/helpers/dayjs.helper';
+
 export const Clock = ({}: ClockProps) => {
+  const [timezone, setTimezone] = useState(dayjs.tz.guess());
+  const [time, setTime] = useState(dayjs());
+
+  useEffect(() => {
+    const timerId = setInterval(() => setTime(dayjs()), 30000);
+
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
+
   return (
     <div>
       <div className="flex items-center space-x-4">
@@ -12,7 +26,7 @@ export const Clock = ({}: ClockProps) => {
 
       <div>
         <p className="font-inter text-8xl font-bold leading-[100px] -tracking-[2.5px] text-white">
-          11:37{' '}
+          {time.format('HH:mm')}{' '}
           <span className="text-base font-light leading-7 tracking-normal">
             BST
           </span>
