@@ -20,6 +20,9 @@
       "@atoms": ["./src/components/atoms/index"],
       "@molecules": ["./src/components/molecules/index"],
       "@organisms": ["./src/components/organisms/index"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@libs/*": ["./src/libs/*"],
+      "@services/*": ["./src/services/*"],
       "@styles/*": ["./src/styles/*"]
     }
   },

@@ -12,6 +12,9 @@ export default defineConfig({
       '@atoms': path.resolve(__dirname, './src/components/atoms'),
       '@molecules': path.resolve(__dirname, './src/components/molecules'),
       '@organisms': path.resolve(__dirname, './src/components/organisms'),
+      '@interfaces': path.resolve(__dirname, './src/interfaces'),
+      '@libs': path.resolve(__dirname, './src/libs'),
+      '@services': path.resolve(__dirname, './src/services'),
       '@styles': path.resolve(__dirname, './src/styles')
     }
   }
