@@ -18,8 +18,10 @@
     "baseUrl": ".",
     "paths": {
       "@atoms": ["./src/components/atoms/index"],
+      "@layouts": ["./src/components/layouts/index"],
       "@molecules": ["./src/components/molecules/index"],
       "@organisms": ["./src/components/organisms/index"],
+      "@hooks": ["./src/hooks/index"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@libs/*": ["./src/libs/*"],
       "@services/*": ["./src/services/*"],

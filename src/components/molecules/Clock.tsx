@@ -1,25 +1,26 @@
-import { SunIcon } from '@heroicons/react/solid';
+import { DayMessage, MorningMessage, ToggleButton } from '@atoms';
+import { useCache, useTime } from '@hooks';
 
-import { ToggleButton } from '@atoms';
+import { IGeolocation } from '@interfaces/geolocation';
+import { getTimezoneAbbreviation } from '@libs/day';
 
 const Clock = () => {
+  const geolocation = useCache<IGeolocation>(['geolocation']);
+  const [hours, minutes] = useTime(geolocation.time_zone);
+
   return (
     <div className="px-6 py-8">
-      <div className="flex items-center space-x-4">
-        <SunIcon className="h-6 w-6 text-white" />
-        <p className="font-inter text-base uppercase leading-6 tracking-[3px] text-white">
-          Good Morning
-        </p>
-      </div>
+      <DayMessage tz={geolocation.time_zone} />
+
       <div className="mt-4">
         <h1 className="font-inter text-8xl font-bold leading-[100px] text-white">
-          11:37
+          {hours}:{minutes}
           <span className="text-base font-normal uppercase leading-7 text-white">
-            bst
+            {getTimezoneAbbreviation(geolocation.time_zone)}
           </span>
         </h1>
         <p className="text-base font-bold uppercase leading-7 tracking-[3px] text-white">
-          In London, Uk
+          In {geolocation.region_name}, {geolocation.country_code}
         </p>
       </div>
       <div className="mt-12">

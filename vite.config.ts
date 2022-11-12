@@ -10,8 +10,10 @@ export default defineConfig({
     alias: {
       '@assets': path.resolve(__dirname, './src/assets'),
       '@atoms': path.resolve(__dirname, './src/components/atoms'),
+      '@layouts': path.resolve(__dirname, './src/components/layouts'),
       '@molecules': path.resolve(__dirname, './src/components/molecules'),
       '@organisms': path.resolve(__dirname, './src/components/organisms'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
       '@interfaces': path.resolve(__dirname, './src/interfaces'),
       '@libs': path.resolve(__dirname, './src/libs'),
       '@services': path.resolve(__dirname, './src/services'),
