@@ -14,7 +14,7 @@ const useTime = (tz: string) => {
     const TEN_SECONDS = 10000;
 
     const id = setInterval(() => {
-      setTimer(timer + 1);
+      setTimer(timer => timer + 1);
     }, TEN_SECONDS);
 
     return () => {

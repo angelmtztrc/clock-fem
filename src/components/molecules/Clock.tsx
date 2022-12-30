@@ -1,8 +1,9 @@
-import { DayMessage, MorningMessage, ToggleButton } from '@atoms';
+import { DayMessage, ToggleButton } from '@atoms';
 import { useCache, useTime } from '@hooks';
 
 import { IGeolocation } from '@interfaces/geolocation';
 import { getTimezoneAbbreviation } from '@libs/day';
+import { twoDigitsFormat } from '@libs/numbers';
 
 const Clock = () => {
   const geolocation = useCache<IGeolocation>(['geolocation']);
@@ -14,7 +15,7 @@ const Clock = () => {
 
       <div className="mt-4">
         <h1 className="font-inter text-8xl font-bold leading-[100px] text-white">
-          {hours}:{minutes}
+          {twoDigitsFormat(hours)}:{twoDigitsFormat(minutes)}
           <span className="text-base font-normal uppercase leading-7 text-white">
             {getTimezoneAbbreviation(geolocation.time_zone)}
           </span>
